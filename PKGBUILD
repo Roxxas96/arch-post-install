@@ -2,28 +2,13 @@ pkgname=arch-post-install
 pkgver=0.1.0
 pkgrel=1
 pkgdesc='This is a post install package to download all most wanted applications for a DevOps'
-url=http://example.com/
-arch=('any')
+arch=('x86_64')
+url="https://github.com/Roxxas96/arch-post-install"
 license=('MIT')
-source=(http://example.com/downloads/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('f0a90db8694fb34685ecd645d97d728b880a6c15c95e7d0700596028bd8bc0f9')
-
-depends=(
-    "git",
-    "vim",
-    "zsh",
-    "visual-studio-code-bin",
-    "docker",
-    "kubectl",
-    "kubectx",
-    "helm",
-    "terraform",
-    "rustup",
-    "go",
-    "gopls",
-    "jdk-openjdk",
-    "base-devel"
-)
+depends=('git' 'vim' 'zsh' 'visual-studio-code-bin' 'docker' 'kubectl' 'kubectx' 'helm' 'terraform' 'rustup' 'go' 'gopls' 'jdk-openjdk')
+makedepends=('git')
+source=('arch-post-install::git://github.com/Roxxas96/arch-post-install.git')
+md5sums=('SKIP')
 
 check() {
     git --version
@@ -40,6 +25,16 @@ check() {
     gopls version
     java --version
     make --version #base-devel package
+}
+
+pkgver() {
+    cd "$pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+    cd "$pkgname"
+    echo "Build complete"
 }
 
 package() {
