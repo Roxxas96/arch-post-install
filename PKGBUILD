@@ -14,6 +14,7 @@ depends=(
     "zsh",
     "visual-studio-code-bin",
     "docker",
+    "docker-compose",
     "kubectl",
     "kubectx",
     "helm",
@@ -22,7 +23,16 @@ depends=(
     "go",
     "gopls",
     "jdk-openjdk",
-    "base-devel"
+    "base-devel",
+    "htop",
+    "k9s",
+    "minikube",
+    "postman-bin",
+    "dbeaver",
+    "kio-gdrive",
+    "google-chrome",
+    "google-cloud-sdk",
+    "aws-cli"
 )
 
 check() {
